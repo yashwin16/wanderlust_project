@@ -1,3 +1,4 @@
+const userId = "6791e4d81e7697cf0c7fb4c3";
 const sampleListings = [
     {
       title: "Mountain Retreat",
@@ -10,6 +11,7 @@ const sampleListings = [
       price: 1000,
       location: "Aspen",
       country: "United States",
+      owner:userId,
     },
     {
       title: "Historic Villa in Tuscany",

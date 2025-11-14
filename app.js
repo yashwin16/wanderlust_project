@@ -16,6 +16,8 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 
+const Listing = require("./models/listing.js");
+const {data} = require("./init/data.js");
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
@@ -54,16 +56,18 @@ const sessionOptions = {
 };
 
 
-main().then(()=>{
-    console.log("Connected to DB");
-}).catch((err)=>{
-    console.log(err);
-});
 
 async function main() {
     await mongoose.connect(dbUrl);
 };
-
+main().then(async ()=>{
+    console.log("Connected to DB");
+    await Listing.deleteMany({});
+    await Listing.insertMany(data);
+    console.log("Data seeded successfully");
+}).catch((err)=>{
+    console.log(err);
+});
 
 app.use(session(sessionOptions));
 app.use(flash());
