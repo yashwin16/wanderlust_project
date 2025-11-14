@@ -26,9 +26,6 @@ body{
 
 /*respnsive navabar*/
 @media(max-width:768px){
-    .navbar {
-        background-color: lightblue !important;
-    }
     .navbar-nav{
         flex-direction: column !important;
         text-align: center;
